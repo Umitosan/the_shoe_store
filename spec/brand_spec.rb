@@ -20,7 +20,13 @@ describe Brand do
     expect(brand1.stores).to(eq([store1]))
   end
 
-  it ("checks for a brand name to exist") do
+  it ("doesn't save the brand if it doesn't have a name") do
+    brand1 = Brand.new({:name => ""})
+    brand1.save()
+    expect(Brand.all).to(eq([]))
+  end
+
+  it ("adds an error if brand name doesn't exist") do
     brand1 = Brand.new({:name => ""})
     brand1.save()
     expect(brand1.errors.any?).to(eq(true))

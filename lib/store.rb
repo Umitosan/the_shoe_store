@@ -3,7 +3,8 @@ class Store < ActiveRecord::Base
   has_many(:brands, through: :inventories)
 
   before_save(:capitalize_name)
-  validate :store_name?
+  validate(:store_name?)
+  # validates(:description, {:presence => true, :length => { :maximum => 50 }})
 
   def capitalize_name
     name.capitalize!

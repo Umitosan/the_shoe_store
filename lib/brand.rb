@@ -4,6 +4,7 @@ class Brand < ActiveRecord::Base
 
   before_save(:capitalize_name)
   validate :brand_name?
+  # validates(:description, {:presence => true, :length => { :maximum => 50 }})
 
   def capitalize_name
     name.capitalize!
