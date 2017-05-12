@@ -35,6 +35,8 @@ post "/create_brand" do
 end
 
 get "/stores/:store_id" do
+  store_id = params.fetch("store_id").to_i
+  @found_store = Store.find_by(id: store_id)
   erb :store_home
 end
 

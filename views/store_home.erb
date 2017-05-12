@@ -1,2 +1,22 @@
 <h1>store_home.erb</h1>
 <hr>
+<div class="center">
+  <h3>"<%= @found_store.name %>"</h3>
+</div>
+
+<%# RENAME STORE %>
+<div class="center">
+  <form action="/store_rename/<%= @found_store.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="new_name">Rename: </label>
+    <input type="text" name="new_name">
+    <button type="submit" class="btn btn-success btn-sm">Save</button>
+  </form>
+</div>
+
+
+
+<hr>
+<div class="center">
+  <a href="/"><button class="btn btn-default btn-sm">Return Home</button></a>
+</div>

@@ -7,7 +7,7 @@
     <form action="/create_store" method="post">
       <label for="store_name">New Store: </label>
       <input type="text" name="store_name">
-      <button class="btn btn-success" type="submit">Save Store</button>
+      <button class="btn btn-success btn-sm" type="submit">Save Store</button>
     </form>
     <%# SHOW ERRORS IF NOT VALID NAME %>
     <% if (defined?(@new_store) != nil) %>
@@ -31,7 +31,7 @@
     <form action="/create_brand" method="post">
       <label for="brand_name">New Brand: </label>
       <input type="text" name="brand_name">
-      <button class="btn btn-info" type="submit">Save Brand</button>
+      <button class="btn btn-info btn-sm" type="submit">Save Brand</button>
     </form>
     <br>
     <h3>Current Brands:</h3>
