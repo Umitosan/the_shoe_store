@@ -20,4 +20,10 @@ describe Store do
     expect(store1.brands).to(eq([brand1]))
   end
 
+  it ("checks for a store name to exist") do
+    store1 = Store.new({:name => ""})
+    store1.save()
+    expect(store1.errors.any?).to(eq(true))
+  end
+
 end
