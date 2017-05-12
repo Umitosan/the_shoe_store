@@ -53,16 +53,12 @@ This web app aids in the managment of multiple shoes stores, including the many 
 
 ## Database Setup Instructions
 
-* _If Postgres is not installed on your computer, follow these instructions https://www.learnhowtoprogram.com/ruby/ruby-database-basics/installing-postgres-7fb0cff7-a0f5-4b61-a0db-8a928b9f67ef_
-* _run ```$ postgres``` in your terminal window and leave it running_
-* _In another terminal window, run ```$ psql```_
-* _Type the following:_
-* _CREATE DATABASE shoe_store;_
-* _\c shoe_store_
-* _CREATE TABLE stores (id serial PRIMARY KEY, name text);_
-* _CREATE TABLE inventories (id serial PRIMARY KEY, name text, time timestamp);_
-* _CREATE TABLE brands (id serial PRIMARY KEY, name text, price decimal);_
-* _CREATE DATABASE shoe_store_test WITH TEMPLATE shoe_store;_
+* If Postgres is not installed on your computer, follow these instructions https://www.learnhowtoprogram.com/ruby/ruby-database-basics/installing-postgres-7fb0cff7-a0f5-4b61-a0db-8a928b9f67ef
+* run ```$ postgres``` in your terminal window and leave it running
+* In another terminal window, run: ```$ rake db:create```
+* then: ```$ rake db:migrate```
+* now your database should be ready to run with the app
+* if you'd like to run the RSpec tests run this: ```$ rake db:test:prepare```
 
 ## Known Bugs
 _N/A_
