@@ -44,7 +44,7 @@ describe Store do
     store1.save()
     store2 = Store.new({:name => "southside shoes"})
     store2.save()
-    expect(Store.all[0].name).to(eq(store1.name))
+    expect(Store.where(:name => "Southside shoes").length).to(eq(1))
   end
 ###============
 

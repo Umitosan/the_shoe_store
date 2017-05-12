@@ -38,6 +38,14 @@ describe Brand do
     brand1.save()
     expect(Brand.all).to(eq([]))
   end
+
+  it ("doesn't save the brand if the brand name already exists") do
+    brand1 = Brand.new({:name => "nike"})
+    brand1.save()
+    brand2 = Brand.new({:name => "nike"})
+    brand2.save()
+    expect(Brand.where(:name => "Nike").length).to(eq(1))
+  end
 ###============
 
 end
