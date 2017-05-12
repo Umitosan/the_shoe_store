@@ -38,8 +38,14 @@ describe Store do
     store1.save()
     expect(Store.all).to(eq([]))
   end
+
+  it ("doesn't save the store if the store name already exists") do
+    store1 = Store.new({:name => "southside shoes"})
+    store1.save()
+    store2 = Store.new({:name => "southside shoes"})
+    store2.save()
+    expect(Store.all[0].name).to(eq(store1.name))
+  end
 ###============
-
-
 
 end
