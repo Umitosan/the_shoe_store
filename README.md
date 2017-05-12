@@ -34,11 +34,11 @@ This web app aids in the managment of multiple shoes stores, including the many 
 |----------|:--------:|:--------:|
 | the program will allow the user to view all store locations on the main page | user visits home page | the list of all current shoe stores is visible |
 | the program will allow the user to add store locations on the main page | user enters a name into an input field and clicks a button | the new shoe store location appears in the list of locations on the page |
-||||
+| - | - | - |
 | the program will allow the user to manage each store location on a separate page | the user clicks a store location link | a new page appears with that location's management interface |
 | the program will allow the user to delete or rename the store location name from that store's page | user clicks a delete button | the store is removed from the database and the home page is shown |
 | the program will allow the user to add shoe brands to a location | on a store page, the user clicks checkboxes next to shoe brands and clicks a button | the shoe brands are added to the list of brands for that store location |
-||||
+| - | - | - |
 | the program will allow the user to view the list of all shoe brands | user clicks a link on the main page | a new page appears with all shoes brands listed |
 | the program will allow the user to manage the list of shoe brands | the user inputs a name into an input field and clicks a button, or the user clicks a delete link next to a shoe brand | the shoe brand page reflects the intended change |
 

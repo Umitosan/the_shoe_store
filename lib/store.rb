@@ -4,7 +4,7 @@ class Store < ActiveRecord::Base
 
   before_save(:capitalize_name)
   validate(:store_name?)
-  # validates(:description, {:presence => true, :length => { :maximum => 50 }})
+  validates(:name, {:presence => true, :length => { :maximum => 100 }})
 
   def capitalize_name
     name.capitalize!

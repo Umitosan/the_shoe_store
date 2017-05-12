@@ -20,6 +20,7 @@ describe Brand do
     expect(brand1.stores).to(eq([store1]))
   end
 
+### VALIDATIONS
   it ("doesn't save the brand if it doesn't have a name") do
     brand1 = Brand.new({:name => ""})
     brand1.save()
@@ -31,5 +32,12 @@ describe Brand do
     brand1.save()
     expect(brand1.errors.any?).to(eq(true))
   end
+
+  it ("doesn't save the brand if the name has over 100 characters") do
+    brand1 = Store.new({:name => "aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-aaaaaaaaa-toolong"})
+    brand1.save()
+    expect(Brand.all).to(eq([]))
+  end
+###============
 
 end
