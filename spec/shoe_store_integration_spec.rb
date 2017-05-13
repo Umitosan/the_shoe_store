@@ -45,6 +45,7 @@ describe("the home page", {:type => :feature}) do
 
 end
 
+
 describe("the selected store page", {:type => :feature}) do
 
   it("displays the current store name on the page") do
@@ -62,6 +63,15 @@ describe("the selected store page", {:type => :feature}) do
     fill_in("new_name", :with => "dope shoes")
     click_button("Save")
     expect(page).to(have_content("Dope shoes"))
+  end
+  it("displays a list of all brands") do
+    visit("/")
+    fill_in("store_name", :with => "footlocker")
+    click_button("Save Store")
+    fill_in("brand_name", :with => "nike")
+    click_button("Save Brand")
+    click_link("Footlocker")
+    expect(page).to(have_content("Nike"))
   end
 
 end
