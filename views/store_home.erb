@@ -6,15 +6,13 @@
 
 <%# RENAME STORE %>
 <div class="center">
-  <form action="/store_rename/<%= @found_store.id %>" method="post">
+  <form action="/stores/rename/<%= @found_store.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
     <label for="new_name">Rename: </label>
     <input type="text" name="new_name">
     <button type="submit" class="btn btn-success btn-sm">Save</button>
   </form>
 </div>
-
-
 
 <hr>
 <div class="center">

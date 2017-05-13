@@ -40,6 +40,10 @@ get "/stores/:store_id" do
   erb :store_home
 end
 
-get "/brands/:brand_id" do
-  erb :store_home
+patch "/stores/rename/:store_id" do
+  store_id = params.fetch("store_id").to_i
+  new_store_name = params.fetch("new_name")
+  @found_store = Store.find_by(id: store_id)
+  @found_store.update(name: new_store_name)
+  redirect "/stores/#{store_id}"
 end
