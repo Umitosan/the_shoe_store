@@ -2,6 +2,18 @@ require "bundler/setup"
 Bundler.require :default
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+
+Store.all.each do |s|
+  s.destroy
+end
+Inventory.all.each do |i|
+  i.destroy
+end
+Brand.all.each do |b|
+  b.destroy
+end
+
+
 get "/" do
   @all_stores = Store.all
   @all_brands = Brand.all

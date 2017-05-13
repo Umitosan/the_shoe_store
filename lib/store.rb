@@ -3,7 +3,6 @@ class Store < ActiveRecord::Base
   has_many(:brands, through: :inventories)
 
   before_save(:capitalize_name)
-  before_create(:capitalize_name)
 
   validate(:store_unique?)
   validate(:store_name?)

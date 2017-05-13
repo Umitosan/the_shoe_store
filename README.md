@@ -1,7 +1,7 @@
 # _The Shoe Store_
 
-#### _A web application designed to help manage multiple shoe store locations and their inventory.
-May 12, 2017_
+####
+_A web application designed to help manage multiple shoe store locations and their inventory.  May 12, 2017_
 
 #### By _**Dominic Brown**_
 

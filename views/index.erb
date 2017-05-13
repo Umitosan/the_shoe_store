@@ -12,7 +12,7 @@
     <%# SHOW ERRORS IF NOT VALID NAME %>
     <% if (defined?(@new_store) != nil) %>
       <% if @new_store.errors.any? %>
-        <% @new_store.errors.full_messages.each do |msg| %>
+        <% @new_store.errors.messages.fetch(:name).each do |msg| %>
           <h5 class="red"><%= msg %></h5>
         <% end %>
       <% end %>
@@ -33,6 +33,14 @@
       <input type="text" name="brand_name">
       <button class="btn btn-info btn-sm" type="submit">Save Brand</button>
     </form>
+    <%# SHOW ERRORS IF NOT VALID NAME %>
+    <% if (defined?(@new_brand) != nil) %>
+      <% if @new_brand.errors.any? %>
+        <% @new_brand.errors.messages.fetch(:name).each do |msg| %>
+          <h5 class="red"><%= msg %></h5>
+        <% end %>
+      <% end %>
+    <% end %>
     <br>
     <h3>Current Brands:</h3>
       <% @all_brands.each do |brand| %>
