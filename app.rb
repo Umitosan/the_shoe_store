@@ -60,3 +60,10 @@ patch "/stores/rename/:store_id" do
   @found_store.update(name: new_store_name)
   redirect "/stores/#{store_id}"
 end
+
+delete "/stores/delete/:store_id" do
+  store_id = params.fetch("store_id").to_i
+  found_store = Store.find_by(id: store_id)
+  found_store.delete
+  redirect "/"
+end
