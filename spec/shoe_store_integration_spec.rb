@@ -82,19 +82,16 @@ describe("the selected store page", {:type => :feature}) do
     expect(page).not_to(have_content("Footlocker"))
   end
 
-
-  # it("saves a brand to a store and diplays it in the inventory list") do
-  #   visit("/")
-  #   fill_in("store_name", :with => "footlocker")
-  #   click_button("Save Store")
-  #   fill_in("brand_name", :with => "nike")
-  #   click_button("Save Brand")
-  #   click_link("Footlocker")
-  #
-  #   check box "nike"
-  #   click button "Add Brands"
-  #
-  #   expect(page).to(have_content("Nike"))
-  # end
+  it("saves a brand to a store and diplays it in the inventory list") do
+    visit("/")
+    fill_in("store_name", :with => "footlocker")
+    click_button("Save Store")
+    fill_in("brand_name", :with => "nike")
+    click_button("Save Brand")
+    click_link("Footlocker")
+    page.check("Nike")
+    click_button("Add to Inventory")
+    expect(page.find("label", :class => "green").text).to(eq("Nike"))
+  end
 
 end

@@ -46,6 +46,8 @@ post "/create_brand" do
   end
 end
 
+
+### STORE_HOME ###
 get "/stores/:store_id" do
   store_id = params.fetch("store_id").to_i
   @found_store = Store.find_by(id: store_id)
@@ -67,3 +69,23 @@ delete "/stores/delete/:store_id" do
   found_store.delete
   redirect "/"
 end
+
+patch "/stores/add_brands/:store_id" do
+  store_id = params["store_id"].to_i
+  selected_brand_ids = params['brand_ids']
+  selected_brand_ids.each do |brand_id|
+    Inventory.create({:store_id => store_id, :brand_id => brand_id.to_i})
+  end
+  redirect("/stores/#{store_id}")
+end
+
+delete "/stores/remove_brands/:store_id" do
+  store_id = params["store_id"].to_i
+  selected_brand_ids = params['brand_ids']
+  selected_brand_ids.each do |brand_id|
+    found_inventory_record = Inventory.all.find_inv_record(store_id, brand_id.to_i)
+    found_inventory_record[0].delete
+  end
+  redirect("/stores/#{store_id}")
+end
+####################

@@ -25,13 +25,29 @@
   <div class="col-xs-6">
     <h3>Brands in stock at this location:</h3>
 
+    <% if (@found_store.brands.length == 0) %>
+      <h5>("<em><%= @found_store.name %>"</em> - doesn't any brands yet)</h5>
+    <% else %>
+      <form action="/stores/remove_brands/<%= @found_store.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+        <% @found_store.brands.each do |brand| %>
+            <div class="checkbox">
+              <label class="green"><b>
+                <input type="checkbox" name="brand_ids[]" value="<%= brand.id %>"><%= brand.name %>
+              </label></b>
+            </div>
+        <% end %>
+        <button class="btn btn-warning btn-sm" type="submit">Remove Brands</button>
+    </form>
+  <% end %>
+
   </div>
   <%# LIST ALL BRANDS + ADD TO STORE %>
   <div class="col-xs-6">
     <h3>All Brands</h3>
     <h5>Select more brands to add them to this store's inventory</h5>
     <div>
-      <form action="/stores/add_brand/<%= @found_store.id %>" method="post">
+      <form action="/stores/add_brands/<%= @found_store.id %>" method="post">
         <input type="hidden" name="_method" value="patch">
         <% @all_brands.each() do |brand| %>
           <div class="checkbox">
@@ -45,10 +61,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 
 <hr>
