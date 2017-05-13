@@ -82,7 +82,7 @@ describe("the selected store page", {:type => :feature}) do
     expect(page).not_to(have_content("Footlocker"))
   end
 
-  it("saves a brand to a store and diplays it in the inventory list") do
+  it("saves brand(s) to a store and diplays it in the inventory list") do
     visit("/")
     fill_in("store_name", :with => "footlocker")
     click_button("Save Store")
@@ -92,6 +92,20 @@ describe("the selected store page", {:type => :feature}) do
     page.check("Nike")
     click_button("Add to Inventory")
     expect(page.find("label", :class => "green").text).to(eq("Nike"))
+  end
+  it("removes brand(s) from a store's inventory") do
+    visit("/")
+    fill_in("store_name", :with => "footlocker")
+    click_button("Save Store")
+    fill_in("brand_name", :with => "nike")
+    click_button("Save Brand")
+    click_link("Footlocker")
+    page.check("Nike")
+    click_button("Add to Inventory")
+    page.find("input", :class => "inv").set(true)
+    click_button("Remove Brands")
+    found_checkboxes = all('input[type=checkbox]')
+    expect(found_checkboxes.length).to(eq(1))
   end
 
 end
