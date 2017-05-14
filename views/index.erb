@@ -38,7 +38,6 @@
     <%# SHOW ERRORS IF NOT VALID NAME %>
     <% if (defined?(@new_brand) != nil) %>
       <% if @new_brand.errors.any? %>
-      <%#binding.pry%>
         <% if @new_brand.errors.messages.has_key?(:name) %>
           <% @new_brand.errors.messages[:name].each do |msg| %>
             <h5 class="red"><%= msg %></h5>

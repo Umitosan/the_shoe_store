@@ -26,6 +26,4 @@ describe Inventory do
     expect(found_inv_records.length).to(eq(1))
   end
 
-
-
 end

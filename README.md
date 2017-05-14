@@ -47,8 +47,8 @@ This web app aids in the managment of multiple shoes stores, including the many 
 * _Set up a production database and a development database in SQL (see instructions below)_
 * _In another terminal window, clone this repository to your machine and navigate to the file path in your terminal._
 * _github link for cloning: https://github.com/Umitosan/the_shoe_store.git
-* _Run $bundle_
-* _Run $ruby app.rb_
+* _Run ```$ bundle```_
+* _Run ```$ ruby app.rb```_
 * _Type localhost:4567 in a browser window to view application_
 
 ## Database Setup Instructions

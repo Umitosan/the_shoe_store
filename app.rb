@@ -2,17 +2,15 @@ require "bundler/setup"
 Bundler.require :default
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-
-Store.all.each do |s|
-  s.destroy
-end
-Inventory.all.each do |i|
-  i.destroy
-end
-Brand.all.each do |b|
-  b.destroy
-end
-
+# Store.all.each do |s|
+#   s.destroy
+# end
+# Inventory.all.each do |i|
+#   i.destroy
+# end
+# Brand.all.each do |b|
+#   b.destroy
+# end
 
 get "/" do
   @all_stores = Store.all
@@ -76,7 +74,7 @@ patch "/stores/add_brands/:store_id" do
   selected_brand_ids = params['brand_ids']
   if (selected_brand_ids != nil)
     selected_brand_ids.each do |brand_id|
-      
+
       Inventory.create({:store_id => store_id, :brand_id => brand_id.to_i})
     end
   end
