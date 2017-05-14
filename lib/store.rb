@@ -13,7 +13,7 @@ class Store < ActiveRecord::Base
   end
 
   def store_name?
-    if self.name.empty?
+    if name.empty?
       errors.add(:name, "Don't forget a store name!")
     end
   end

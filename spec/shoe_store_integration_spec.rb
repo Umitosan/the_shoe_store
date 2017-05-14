@@ -11,6 +11,7 @@ describe("the home page", {:type => :feature}) do
   it("adds a new store to the list") do
     visit("/")
     fill_in("brand_name", :with => "Nike")
+    fill_in("brand_price", :with => 45.99)
     click_button("Save Brand")
     expect(page).to(have_content("Nike"))
   end
@@ -37,8 +38,10 @@ describe("the home page", {:type => :feature}) do
   it("show an error message for duplicate brands") do
     visit("/")
     fill_in("brand_name", :with => "nike")
+    fill_in("brand_price", :with => 45.99)
     click_button("Save Brand")
     fill_in("brand_name", :with => "nike")
+    fill_in("brand_price", :with => 45.99)
     click_button("Save Brand")
     expect(page).to(have_content("That brand already exists!"))
   end
@@ -69,6 +72,7 @@ describe("the selected store page", {:type => :feature}) do
     fill_in("store_name", :with => "footlocker")
     click_button("Save Store")
     fill_in("brand_name", :with => "nike")
+    fill_in("brand_price", :with => 45.99)
     click_button("Save Brand")
     click_link("Footlocker")
     expect(page).to(have_content("Nike"))
@@ -87,17 +91,19 @@ describe("the selected store page", {:type => :feature}) do
     fill_in("store_name", :with => "footlocker")
     click_button("Save Store")
     fill_in("brand_name", :with => "nike")
+    fill_in("brand_price", :with => 45.99)
     click_button("Save Brand")
     click_link("Footlocker")
     page.check("Nike")
     click_button("Add to Inventory")
-    expect(page.find("label", :class => "green").text).to(eq("Nike"))
+    expect(page.find("label", :class => "green").text).to(eq("Nike - $45.99"))
   end
   it("removes brand(s) from a store's inventory") do
     visit("/")
     fill_in("store_name", :with => "footlocker")
     click_button("Save Store")
     fill_in("brand_name", :with => "nike")
+    fill_in("brand_price", :with => 45.99)
     click_button("Save Brand")
     click_link("Footlocker")
     page.check("Nike")

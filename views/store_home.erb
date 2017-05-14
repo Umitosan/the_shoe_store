@@ -33,7 +33,7 @@
         <% @found_store.brands.each do |brand| %>
             <div class="checkbox">
               <label class="green"><b>
-                <input class="inv" type="checkbox" name="brand_ids[]" value="<%= brand.id %>"><%= brand.name %>
+                <input class="inv" type="checkbox" name="brand_ids[]" value="<%= brand.id %>"><%= brand.name %> - <%= brand.price %>
               </label></b>
             </div>
         <% end %>
@@ -52,7 +52,7 @@
         <% @all_brands.each() do |brand| %>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="brand_ids[]" value="<%= brand.id %>"><%= brand.name %>
+              <input type="checkbox" name="brand_ids[]" value="<%= brand.id %>"><%= brand.name %> - <%= brand.price %>
             </label>
           </div>
         <% end %>

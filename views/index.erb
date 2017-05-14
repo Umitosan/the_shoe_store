@@ -4,12 +4,13 @@
     <form action="/create_store" method="post">
       <label for="store_name">New Store: </label>
       <input type="text" name="store_name">
+      <br>
       <button class="btn btn-success btn-sm" type="submit">Save Store</button>
     </form>
     <%# SHOW ERRORS IF NOT VALID NAME %>
     <% if (defined?(@new_store) != nil) %>
       <% if @new_store.errors.any? %>
-        <% @new_store.errors.messages.fetch(:name).each do |msg| %>
+        <% @new_store.errors.full_messages.each do |msg| %>
           <h5 class="red"><%= msg %></h5>
         <% end %>
       <% end %>
@@ -28,13 +29,25 @@
     <form action="/create_brand" method="post">
       <label for="brand_name">New Brand: </label>
       <input type="text" name="brand_name">
+      <br>
+      <label for="brand_price">Price: </label>
+      <input type="number" step="0.001" name="brand_price">
+      <br>
       <button class="btn btn-info btn-sm" type="submit">Save Brand</button>
     </form>
     <%# SHOW ERRORS IF NOT VALID NAME %>
     <% if (defined?(@new_brand) != nil) %>
       <% if @new_brand.errors.any? %>
-        <% @new_brand.errors.messages.fetch(:name).each do |msg| %>
-          <h5 class="red"><%= msg %></h5>
+      <%#binding.pry%>
+        <% if @new_brand.errors.messages.has_key?(:name) %>
+          <% @new_brand.errors.messages[:name].each do |msg| %>
+            <h5 class="red"><%= msg %></h5>
+          <% end %>
+        <% end %>
+        <% if @new_brand.errors.messages.has_key?(:price) %>
+          <% @new_brand.errors.messages[:price].each do |msg| %>
+            <h5 class="red"><%= msg %></h5>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
@@ -42,7 +55,7 @@
     <h3>Current Brands:</h3>
       <% @all_brands.each do |brand| %>
         <ul>
-          <li><%= brand.name %></a></li>
+          <li><%= brand.name %> - <%= brand.price %></li>
         </ul>
       <% end %>
   </div>

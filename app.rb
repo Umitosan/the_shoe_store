@@ -35,7 +35,8 @@ end
 
 post "/create_brand" do
   brand_name = params.fetch('brand_name')
-  @new_brand = Brand.new(name: brand_name)
+  brand_price = params.fetch('brand_price')
+  @new_brand = Brand.new(name: brand_name, price: brand_price)
   if @new_brand.save()
     redirect "/"
   else

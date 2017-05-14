@@ -8,7 +8,7 @@ describe Inventory do
   it ("finds a single RECORD from the INVENTORIES table") do
     store1 = Store.new({:name => "footlocker"})
     store1.save
-    brand1 = Brand.new({:name => "adidas", :price => 59.99})
+    brand1 = Brand.new({:name => "adidas", :price => '59.99'})
     brand1.save
     Inventory.create({:store_id => store1.id, :brand_id => brand1.id})
     found_inv_record = Inventory.all.find_inv_record(store1.id, brand1.id)
