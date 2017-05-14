@@ -74,8 +74,11 @@ end
 patch "/stores/add_brands/:store_id" do
   store_id = params["store_id"].to_i
   selected_brand_ids = params['brand_ids']
-  selected_brand_ids.each do |brand_id|
-    Inventory.create({:store_id => store_id, :brand_id => brand_id.to_i})
+  if (selected_brand_ids != nil)
+    selected_brand_ids.each do |brand_id|
+      
+      Inventory.create({:store_id => store_id, :brand_id => brand_id.to_i})
+    end
   end
   redirect("/stores/#{store_id}")
 end
@@ -83,9 +86,11 @@ end
 delete "/stores/remove_brands/:store_id" do
   store_id = params["store_id"].to_i
   selected_brand_ids = params['brand_ids']
-  selected_brand_ids.each do |brand_id|
-    found_inventory_record = Inventory.all.find_inv_record(store_id, brand_id.to_i)
-    found_inventory_record[0].delete
+  if (selected_brand_ids != nil)
+    selected_brand_ids.each do |brand_id|
+      found_inventory_record = Inventory.all.find_inv_record(store_id, brand_id.to_i)
+      found_inventory_record[0].delete
+    end
   end
   redirect("/stores/#{store_id}")
 end
